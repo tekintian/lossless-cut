@@ -1,5 +1,9 @@
 {
   "search.exclude": {
     "/public/locales/**": true,
-  }
+  },
+  "i18n-ally.localesPaths": [
+    "public/locales",
+    "vite-dist/locales"
+  ]
 }
