@@ -38,7 +38,7 @@ export async function promptTimeOffset({ initialValue, title, text }) {
   return duration;
 }
 
-// https://github.com/mifi/lossless-cut/issues/1495
+// https://github.com/tekintian/lossless-cut/issues/1495
 export const showOpenDialog = async ({
   filters = isWindows ? [{ name: i18n.t('All Files'), extensions: ['*'] }] : undefined,
   ...props
@@ -215,7 +215,7 @@ async function askForSegmentDuration(fileDuration) {
   return parseDuration(value);
 }
 
-// https://github.com/mifi/lossless-cut/issues/1153
+// https://github.com/tekintian/lossless-cut/issues/1153
 async function askForSegmentsRandomDurationRange() {
   function parse(str) {
     const match = str.replace(/\s/g, '').match(/^duration([\d.]+)to([\d.]+),gap([-\d.]+)to([-\d.]+)$/i);

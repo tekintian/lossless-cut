@@ -1,2 +1,2 @@
 Fixtures are stored separately:
-https://github.com/mifi/lossless-cut-fixtures
+https://github.com/tekintian/lossless-cut-fixtures

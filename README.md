@@ -1,15 +1,15 @@
 <div align="center">
 	<br>
 	<br>
-  <p><a href="https://mifi.no/losslesscut/"><img src="src/icon.svg" width="130" alt="LosslessCut" /></a></p>
+  <p><a href="https://api.tekin.cn/losslesscut/"><img src="src/icon.svg" width="130" alt="LosslessCut" /></a></p>
   <p><b>LosslessCut</b></p>
   The swiss army knife of lossless video/audio editing
 	<br>
-  <img src="https://github.com/mifi/lossless-cut/workflows/Build/release/badge.svg" />
-  <a href="https://paypal.me/mifino/usd"><img src="https://img.shields.io/badge/Donate-PayPal-green.svg" /></a> <a href="https://github.com/mifi/lossless-cut#download"><img src="https://img.shields.io/github/v/release/mifi/lossless-cut" /></a> <a href="https://discord.gg/fhnEREfUJ3"><img src="https://img.shields.io/discord/986051448385183804" /></a> <a href="https://twitter.com/losslesscut"><img src="https://img.shields.io/twitter/follow/losslesscut?label=Twitter&style=social" alt="Twitter"></a>
+  <img src="https://github.com/tekintian/lossless-cut/workflows/Build/release/badge.svg" />
+  <a href="https://paypal.me/mifino/usd"><img src="https://img.shields.io/badge/Donate-PayPal-green.svg" /></a> <a href="https://github.com/tekintian/lossless-cut#download"><img src="https://img.shields.io/github/v/release/mifi/lossless-cut" /></a> <a href="https://discord.gg/fhnEREfUJ3"><img src="https://img.shields.io/discord/986051448385183804" /></a> <a href="https://twitter.com/losslesscut"><img src="https://img.shields.io/twitter/follow/losslesscut?label=Twitter&style=social" alt="Twitter"></a>
 	<br>
 	<br>
-  <a href="https://mifi.no/thanks/">Thanks to my supporters</a> and everyone who purchased LosslessCut!
+  <a href="https://yunnan.ws/thanks/">Thanks to my supporters</a> and everyone who purchased LosslessCut!
 	<br>
 	<br>
   <p align="center"><img src="main_screenshot.jpg" width="600" alt="screenshot" /></p>
@@ -17,13 +17,13 @@
 	<br>
 </div>
 
-
 LosslessCut aims to be the ultimate cross platform FFmpeg GUI for extremely fast and lossless operations on video, audio, subtitle and other related media files.
 The main feature is lossless trimming and cutting of video and audio files, which is great for saving space by rough-cutting your large video files taken from a video camera, GoPro, drone, etc. It lets you quickly extract the good parts from your videos and discard many gigabytes of data without doing a slow re-encode and thereby losing quality. Or you can add a music or subtitle track to your video without needing to encode. Everything is extremely fast because it does an almost direct data copy, fueled by the awesome FFmpeg which does all the grunt work.
 
 ## Features
+
 - Lossless cutting of most video and audio formats
-- [Smart cut](https://github.com/mifi/lossless-cut/issues/126) (experimental)
+- [Smart cut](https://github.com/tekintian/lossless-cut/issues/126) (experimental)
 - Losslessly cut out parts of video/audio (for cutting away commercials etc.)
 - Losslessly rearrange the order of video/audio segments
 - Lossless merge/concatenation of arbitrary files (with identical codecs parameters, e.g. from the same camera)
@@ -57,7 +57,7 @@ The main feature is lossless trimming and cutting of video and audio files, whic
 - Customizable keyboard hotkeys
 - Black scene detection, silent audio detection, and scene change detection
 - Divide timeline into segments with length L or into N segments or even randomized segments!
-- Speed up / slow down video or audio file ([changing FPS](https://github.com/mifi/lossless-cut/issues/1712))
+- Speed up / slow down video or audio file ([changing FPS](https://github.com/tekintian/lossless-cut/issues/1712))
 - Basic [CLI](cli.md) and [HTTP API](api.md)
 
 ## Example lossless use cases
@@ -79,14 +79,15 @@ The main feature is lossless trimming and cutting of video and audio files, whic
 - Fix rotation of a video that has the wrong orientation flag set
   - Great for rotating phone videos that come out the wrong way without actually re-encoding the video.
 - Loop a video / audio clip X times quickly without re-encoding
-  - See [#284](https://github.com/mifi/lossless-cut/issues/284)
+  - See [#284](https://github.com/tekintian/lossless-cut/issues/284)
 - Convert a video or parts of it into X image files (not lossless)
-- Losslessly split a video into one file per scene (note you probably have to shift segments, see [#330](https://github.com/mifi/lossless-cut/issues/330).)
+- Losslessly split a video into one file per scene (note you probably have to shift segments, see [#330](https://github.com/tekintian/lossless-cut/issues/330).)
 - Cut away silent parts of an audio/video
 - Split video into segments to for example respect Twitter's 140 second limit
 - Annotate each segment with one or more tags, then use those tags to organize your segments or use it to create an output folder structure or hierarchy for your segments.
 
 ### Export cut times as YouTube Chapters
+
 1. Export with Merge and "Create chapters from merged segments" enabled
 2. Open the exported file and select "Import chapters" in the dialog
 3. File -> Export project -> YouTube Chapters
@@ -98,6 +99,7 @@ First export each track as individual files. Then use Handbrake or similar to re
 ### Advanced multi-step workflows
 
 **Tip:** you can use LosslessCut in multiple passes in order to achieve separate trimming of individual tracks:
+
 1. Open a file an export all tracks as individual files
 2. Open the exported track files independently and cut them as desired
 3. Add the track back to the video and combine them to one output video
@@ -110,22 +112,22 @@ If you want to support my continued work on LosslessCut, and you want the advant
 
 For Linux these are some alternatives:
 
-<a href="https://snapcraft.io/losslesscut"><img src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" alt="Snapcraft" height="50"/></a> <a href="https://flathub.org/apps/details/no.mifi.losslesscut"><img src="https://flathub.org/assets/badges/flathub-badge-en.png" alt="Flathub" height="50"/></a>
+<a href="https://snapcraft.io/losslesscut"><img src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" alt="Snapcraft" height="50"/></a> <a href="https://flathub.org/apps/details/cn.tekin.losslesscut"><img src="https://flathub.org/assets/badges/flathub-badge-en.png" alt="Flathub" height="50"/></a>
 
 If you prefer to download the executables manually, this will of course always be free:
 
-- Mac OS X: [Intel DMG](https://github.com/mifi/lossless-cut/releases/latest/download/LosslessCut-mac-x64.dmg) / [Apple Silicon DMG](https://github.com/mifi/lossless-cut/releases/latest/download/LosslessCut-mac-arm64.dmg)
-- Windows: [7zip](https://github.com/mifi/lossless-cut/releases/latest/download/LosslessCut-win-x64.7z) (Windows 7, 8 and 8.1 is **no longer supported** after [v3.50.0](https://github.com/mifi/lossless-cut/releases/tag/v3.50.0))
-- Linux: [x64 tar.bz2](https://github.com/mifi/lossless-cut/releases/latest/download/LosslessCut-linux-x64.tar.bz2) / [x64 AppImage](https://github.com/mifi/lossless-cut/releases/latest/download/LosslessCut-linux-x86_64.AppImage) / [arm64 tar.bz2](https://github.com/mifi/lossless-cut/releases/latest/download/LosslessCut-linux-arm64.tar.bz2) / [Raspberry Pi armv7l](https://github.com/mifi/lossless-cut/releases/latest/download/LosslessCut-linux-armv7l.tar.bz2)
-- [More releases](https://github.com/mifi/lossless-cut/releases) (note that APPX for Windows and PKG for MacOS **do not work**)
+- Mac OS X: [Intel DMG](https://github.com/tekintian/lossless-cut/releases/latest/download/LosslessCut-mac-x64.dmg) / [Apple Silicon DMG](https://github.com/tekintian/lossless-cut/releases/latest/download/LosslessCut-mac-arm64.dmg)
+- Windows: [7zip](https://github.com/tekintian/lossless-cut/releases/latest/download/LosslessCut-win-x64.7z) (Windows 7, 8 and 8.1 is **no longer supported** after [v3.50.0](https://github.com/tekintian/lossless-cut/releases/tag/v3.50.0))
+- Linux: [x64 tar.bz2](https://github.com/tekintian/lossless-cut/releases/latest/download/LosslessCut-linux-x64.tar.bz2) / [x64 AppImage](https://github.com/tekintian/lossless-cut/releases/latest/download/LosslessCut-linux-x86_64.AppImage) / [arm64 tar.bz2](https://github.com/tekintian/lossless-cut/releases/latest/download/LosslessCut-linux-arm64.tar.bz2) / [Raspberry Pi armv7l](https://github.com/tekintian/lossless-cut/releases/latest/download/LosslessCut-linux-armv7l.tar.bz2)
+- [More releases](https://github.com/tekintian/lossless-cut/releases) (note that APPX for Windows and PKG for MacOS **do not work**)
 
-If you find LosslessCut useful, I'm very thankful for [your support](https://github.com/mifi/lossless-cut#donate-).
+If you find LosslessCut useful, I'm very thankful for [your support](https://github.com/tekintian/lossless-cut#donate-).
 
 **What's the difference between App Stores and GitHub download?** [Please see FAQ](issues.md#app-stores-and-github-difference)
 
 ### Nightly builds 🧪
 
-If you want to test the very latest and greatest bleeding-edge version. 1. Go to [Actions](https://github.com/mifi/lossless-cut/actions/workflows/build.yml), 2. click on the latest *Build/release*, 3. scroll all the way down to *Artifacts*. **Note:** these builds may be totally broken!
+If you want to test the very latest and greatest bleeding-edge version. 1. Go to [Actions](https://github.com/tekintian/lossless-cut/actions/workflows/build.yml), 2. click on the latest _Build/release_, 3. scroll all the way down to _Artifacts_. **Note:** these builds may be totally broken!
 
 ## [Supported operating systems](./requirements.md)
 
@@ -149,15 +151,15 @@ Codecs and formats not listed above can still be converted to a supported format
 - Select the cut segment's start and end time by moving the time marker and then pressing <kbd>I</kbd> to set start time, and <kbd>O</kbd> to set end time.
   - Note that all segments you create will be **preserved** and exported as new files. You can change this behavior with the **Yin Yang** symbol ☯️, in which case it will instead **remove** all selected segments and export the parts **between** segments.
   - Note also that start times will not be accurate, see [Known issues](issues.md)
-- *(optional)* If you want to add more than one segment, move to the desired start time and press <kbd>+</kbd>, then select the next segment start/end times with <kbd>I</kbd>/<kbd>O</kbd>.
-- *(optional)* If you want to re-merge all the selected segments into one file after cutting, toggle the button `Separate files` to `Merge cuts`.
-- *(optional)* If you want to export to a certain output folder, press the `Working dir unset` button (default: Input file folder)
-- *(optional)* If you want to change orientation, press the **rotation** button
-- *(optional)* By default, audio, video and subtitle tracks from the input file will be cut and exported. Press the `Tracks` button to customise and/or add new tracks from other files.
-- *(optional)* select a new output format
-- *(optional)* In the right-hand segments panel, right click a segment for options, or drag-drop to reorder. Segments will appear in this order in the merged output.
+- _(optional)_ If you want to add more than one segment, move to the desired start time and press <kbd>+</kbd>, then select the next segment start/end times with <kbd>I</kbd>/<kbd>O</kbd>.
+- _(optional)_ If you want to re-merge all the selected segments into one file after cutting, toggle the button `Separate files` to `Merge cuts`.
+- _(optional)_ If you want to export to a certain output folder, press the `Working dir unset` button (default: Input file folder)
+- _(optional)_ If you want to change orientation, press the **rotation** button
+- _(optional)_ By default, audio, video and subtitle tracks from the input file will be cut and exported. Press the `Tracks` button to customise and/or add new tracks from other files.
+- _(optional)_ select a new output format
+- _(optional)_ In the right-hand segments panel, right click a segment for options, or drag-drop to reorder. Segments will appear in this order in the merged output.
 - **When done, press the `Export` button (or <kbd>E</kbd>) to show an overview with export options.**
-- *(optional)* adjust any export options
+- _(optional)_ adjust any export options
 - **Then press `Export` again to confirm the export**
 - Press the **Camera** button (or <kbd>C</kbd>) if you want to take a JPEG/PNG snapshot from the current time
 - If you want to move the original file to trash, press the **trash** button
@@ -181,7 +183,7 @@ If you have any problem or question, [please read this](issues.md) before creati
 
 This project is maintained by me alone. The project will always remain free and open source, but if it's useful for you, consider supporting me. :) It will give me extra motivation to improve it. Or even better [donate to ffmpeg](https://www.ffmpeg.org/donations.html) because they are doing the world a big favor 🙏
 
-[Paypal](https://paypal.me/mifino/usd) | [crypto](https://mifi.no/thanks)
+[Paypal](https://paypal.me/mifino/usd) | [crypto](https://yunnan.ws/thanks)
 
 ## Featured
 
@@ -190,22 +192,23 @@ This project is maintained by me alone. The project will always remain free and 
 - Are you using LosslessCut for some interesting project and want your link here? Reach out!
 
 ## Attributions
+
 - App icon made by [Dimi Kazak](http://www.flaticon.com/authors/dimi-kazak "Dimi Kazak") from [www.flaticon.com](http://www.flaticon.com "Flaticon") is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/ "Creative Commons BY 3.0")
 - [Lottie animation](https://lottiefiles.com/7077-magic-flow)
 - Thanks to Adi Abinun for his UI sketch work, inspiration and guidance
-- [Thanks to everyone for supporting](https://mifi.no/thanks/) my open source work 🙌
+- [Thanks to everyone for supporting](https://yunnan.ws/thanks/) my open source work 🙌
 - Thanks to translators who helped translate the app. [You can too!](translation.md)
 
 ## More software
 
-- I made a command line video editor with slick transitions and lots of colors! [editly](https://github.com/mifi/editly)
-- I made a tool for cross platform sharing of files between computer/phone over the local network: [ezshare](https://github.com/mifi/ezshare)
-- I created a super simple Instagram bot for getting more followers [SimpleInstaBot](https://github.com/mifi/SimpleInstaBot)
+- I made a command line video editor with slick transitions and lots of colors! [editly](https://github.com/tekintian/editly)
+- I made a tool for cross platform sharing of files between computer/phone over the local network: [ezshare](https://github.com/tekintian/ezshare)
+- I created a super simple Instagram bot for getting more followers [SimpleInstaBot](https://github.com/tekintian/SimpleInstaBot)
 
 ---
 
 Made with ❤️ in [🇳🇴](https://www.youtube.com/watch?v=uQIv8Vo9_Jc)
 
-[More apps by mifi.no](https://mifi.no/)
+[More apps by yunnan.ws](https://yunnan.ws/)
 
-Follow me on [GitHub](https://github.com/mifi/), [YouTube](https://www.youtube.com/channel/UC6XlvVH63g0H54HSJubURQA), [IG](https://www.instagram.com/mifi.no/), [Twitter](https://twitter.com/mifi_no) for more awesome content!
+Follow me on [GitHub](https://github.com/tekintian/), [YouTube](https://www.youtube.com/channel/UC6XlvVH63g0H54HSJubURQA), [IG](https://www.instagram.com/yunnan.ws/), [Twitter](https://twitter.com/mifi_no) for more awesome content!

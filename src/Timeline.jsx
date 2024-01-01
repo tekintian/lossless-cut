@@ -79,7 +79,7 @@ const Timeline = memo(({
   const isZoomed = zoom > 1;
 
   // Don't show keyframes if too packed together (at current zoom)
-  // See https://github.com/mifi/lossless-cut/issues/259
+  // See https://github.com/tekintian/lossless-cut/issues/259
   // todo
   // const areKeyframesTooClose = keyframes.length > zoom * 200;
   const areKeyframesTooClose = false;
@@ -94,7 +94,7 @@ const Timeline = memo(({
   const commandedTimePercent = useMemo(() => calculateTimelinePercent(commandedTime), [calculateTimelinePercent, commandedTime]);
 
   const timeOfInterestPosPixels = useMemo(() => {
-    // https://github.com/mifi/lossless-cut/issues/676
+    // https://github.com/tekintian/lossless-cut/issues/676
     const pos = calculateTimelinePos(relevantTime);
     if (pos != null && timelineScrollerRef.current) return pos * zoom * timelineScrollerRef.current.offsetWidth;
     return undefined;
@@ -214,7 +214,7 @@ const Timeline = memo(({
       window.removeEventListener('mousemove', onMouseMove);
     }
 
-    // https://github.com/mifi/lossless-cut/issues/1432
+    // https://github.com/tekintian/lossless-cut/issues/1432
     // https://stackoverflow.com/questions/11533098/how-to-catch-mouse-up-event-outside-of-element
     // https://stackoverflow.com/questions/6073505/what-is-the-difference-between-screenx-y-clientx-y-and-pagex-y
     window.addEventListener('mouseup', onMouseUp, { once: true });

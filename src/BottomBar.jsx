@@ -62,7 +62,7 @@ const CutTimeInput = memo(({ darkMode, cutTime, setCutTime, startTimeOffset, see
     } catch (err) {
       console.error('Cannot set cut time', err);
       // If we get an error from setCutTime, remain in the editing state (cutTimeManual)
-      // https://github.com/mifi/lossless-cut/issues/988
+      // https://github.com/tekintian/lossless-cut/issues/988
     }
   }, [isStart, seekAbs, setCutTime, startTimeOffset]);
 

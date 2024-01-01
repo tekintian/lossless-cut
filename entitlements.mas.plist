@@ -6,7 +6,7 @@
 	<true/>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>46F6T3M669.no.mifi.losslesscut-mac</string>
+		<string>46F6T3M669.cn.tekin.losslesscut-mac</string>
 	</array>
 	<key>com.apple.security.network.client</key>
 	<true/>

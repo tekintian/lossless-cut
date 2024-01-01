@@ -1,91 +1,90 @@
-const Store = require('electron-store');
-const electron = require('electron');
-const os = require('os');
-const { join, dirname } = require('path');
-const { pathExists } = require('fs-extra');
+const Store = require("electron-store");
+const electron = require("electron");
+const os = require("os");
+const { join, dirname } = require("path");
+const { pathExists } = require("fs-extra");
 
-const logger = require('./logger');
+const logger = require("./logger");
 
 const { app } = electron;
 
-
 const defaultKeyBindings = [
-  { keys: 'plus', action: 'addSegment' },
-  { keys: 'space', action: 'togglePlayResetSpeed' },
-  { keys: 'k', action: 'togglePlayNoResetSpeed' },
-  { keys: 'j', action: 'reducePlaybackRate' },
-  { keys: 'shift+j', action: 'reducePlaybackRateMore' },
-  { keys: 'l', action: 'increasePlaybackRate' },
-  { keys: 'shift+l', action: 'increasePlaybackRateMore' },
-  { keys: 'z', action: 'timelineToggleComfortZoom' },
-  { keys: ',', action: 'seekPreviousFrame' },
-  { keys: '.', action: 'seekNextFrame' },
-  { keys: 'c', action: 'captureSnapshot' },
-  { keys: 'i', action: 'setCutStart' },
-  { keys: 'o', action: 'setCutEnd' },
-  { keys: 'backspace', action: 'removeCurrentSegment' },
-  { keys: 'd', action: 'cleanupFilesDialog' },
-  { keys: 'b', action: 'splitCurrentSegment' },
-  { keys: 'r', action: 'increaseRotation' },
-  { keys: 'g', action: 'goToTimecode' },
+  { keys: "plus", action: "addSegment" },
+  { keys: "space", action: "togglePlayResetSpeed" },
+  { keys: "k", action: "togglePlayNoResetSpeed" },
+  { keys: "j", action: "reducePlaybackRate" },
+  { keys: "shift+j", action: "reducePlaybackRateMore" },
+  { keys: "l", action: "increasePlaybackRate" },
+  { keys: "shift+l", action: "increasePlaybackRateMore" },
+  { keys: "z", action: "timelineToggleComfortZoom" },
+  { keys: ",", action: "seekPreviousFrame" },
+  { keys: ".", action: "seekNextFrame" },
+  { keys: "c", action: "captureSnapshot" },
+  { keys: "i", action: "setCutStart" },
+  { keys: "o", action: "setCutEnd" },
+  { keys: "backspace", action: "removeCurrentSegment" },
+  { keys: "d", action: "cleanupFilesDialog" },
+  { keys: "b", action: "splitCurrentSegment" },
+  { keys: "r", action: "increaseRotation" },
+  { keys: "g", action: "goToTimecode" },
 
-  { keys: 'left', action: 'seekBackwards' },
-  { keys: 'ctrl+left', action: 'seekBackwardsPercent' },
-  { keys: 'command+left', action: 'seekBackwardsPercent' },
-  { keys: 'alt+left', action: 'seekBackwardsKeyframe' },
-  { keys: 'shift+left', action: 'jumpCutStart' },
+  { keys: "left", action: "seekBackwards" },
+  { keys: "ctrl+left", action: "seekBackwardsPercent" },
+  { keys: "command+left", action: "seekBackwardsPercent" },
+  { keys: "alt+left", action: "seekBackwardsKeyframe" },
+  { keys: "shift+left", action: "jumpCutStart" },
 
-  { keys: 'right', action: 'seekForwards' },
-  { keys: 'ctrl+right', action: 'seekForwardsPercent' },
-  { keys: 'command+right', action: 'seekForwardsPercent' },
-  { keys: 'alt+right', action: 'seekForwardsKeyframe' },
-  { keys: 'shift+right', action: 'jumpCutEnd' },
+  { keys: "right", action: "seekForwards" },
+  { keys: "ctrl+right", action: "seekForwardsPercent" },
+  { keys: "command+right", action: "seekForwardsPercent" },
+  { keys: "alt+right", action: "seekForwardsKeyframe" },
+  { keys: "shift+right", action: "jumpCutEnd" },
 
-  { keys: 'ctrl+home', action: 'jumpTimelineStart' },
-  { keys: 'ctrl+end', action: 'jumpTimelineEnd' },
+  { keys: "ctrl+home", action: "jumpTimelineStart" },
+  { keys: "ctrl+end", action: "jumpTimelineEnd" },
 
-  { keys: 'up', action: 'jumpPrevSegment' },
-  { keys: 'ctrl+up', action: 'timelineZoomIn' },
-  { keys: 'command+up', action: 'timelineZoomIn' },
-  { keys: 'shift+up', action: 'batchPreviousFile' },
+  { keys: "up", action: "jumpPrevSegment" },
+  { keys: "ctrl+up", action: "timelineZoomIn" },
+  { keys: "command+up", action: "timelineZoomIn" },
+  { keys: "shift+up", action: "batchPreviousFile" },
 
-  { keys: 'down', action: 'jumpNextSegment' },
-  { keys: 'ctrl+down', action: 'timelineZoomOut' },
-  { keys: 'command+down', action: 'timelineZoomOut' },
-  { keys: 'shift+down', action: 'batchNextFile' },
+  { keys: "down", action: "jumpNextSegment" },
+  { keys: "ctrl+down", action: "timelineZoomOut" },
+  { keys: "command+down", action: "timelineZoomOut" },
+  { keys: "shift+down", action: "batchNextFile" },
 
-  { keys: 'shift+enter', action: 'batchOpenSelectedFile' },
+  { keys: "shift+enter", action: "batchOpenSelectedFile" },
 
-  // https://github.com/mifi/lossless-cut/issues/610
-  { keys: 'ctrl+z', action: 'undo' },
-  { keys: 'command+z', action: 'undo' },
-  { keys: 'ctrl+shift+z', action: 'redo' },
-  { keys: 'command+shift+z', action: 'redo' },
+  // https://github.com/tekintian/lossless-cut/issues/610
+  { keys: "ctrl+z", action: "undo" },
+  { keys: "command+z", action: "undo" },
+  { keys: "ctrl+shift+z", action: "redo" },
+  { keys: "command+shift+z", action: "redo" },
 
-  { keys: 'ctrl+c', action: 'copySegmentsToClipboard' },
-  { keys: 'command+c', action: 'copySegmentsToClipboard' },
+  { keys: "ctrl+c", action: "copySegmentsToClipboard" },
+  { keys: "command+c", action: "copySegmentsToClipboard" },
 
-  { keys: 'f', action: 'toggleFullscreenVideo' },
+  { keys: "f", action: "toggleFullscreenVideo" },
 
-  { keys: 'enter', action: 'labelCurrentSegment' },
+  { keys: "enter", action: "labelCurrentSegment" },
 
-  { keys: 'e', action: 'export' },
-  { keys: 'shift+/', action: 'toggleKeyboardShortcuts' },
-  { keys: 'escape', action: 'closeActiveScreen' },
+  { keys: "e", action: "export" },
+  { keys: "shift+/", action: "toggleKeyboardShortcuts" },
+  { keys: "escape", action: "closeActiveScreen" },
 
-  { keys: 'alt+up', action: 'increaseVolume' },
-  { keys: 'alt+down', action: 'decreaseVolume' },
+  { keys: "alt+up", action: "increaseVolume" },
+  { keys: "alt+down", action: "decreaseVolume" },
 ];
 
 const defaults = {
-  captureFormat: 'jpeg',
+  captureFormat: "jpeg",
   customOutDir: undefined,
   keyframeCut: true,
   autoMerge: false,
   autoDeleteMergedSegments: true,
   segmentsToChaptersOnly: false,
   enableSmartCut: false,
-  timecodeFormat: 'timecodeWithDecimalFraction',
+  timecodeFormat: "timecodeWithDecimalFraction",
   invertCutSegments: false,
   autoExportExtraStreams: true,
   exportConfirmEnabled: true,
@@ -99,7 +98,7 @@ const defaults = {
   ffmpegExperimental: false,
   preserveMovData: false,
   movFastStart: true,
-  avoidNegativeTs: 'make_zero',
+  avoidNegativeTs: "make_zero",
   hideNotifications: undefined,
   autoLoadTimecode: false,
   segmentsToChapters: false,
@@ -118,14 +117,16 @@ const defaults = {
   customFfPath: undefined,
   storeProjectInWorkingDir: true,
   enableOverwriteOutput: true,
-  mouseWheelZoomModifierKey: 'ctrl',
-  captureFrameMethod: 'videotag', // we don't default to ffmpeg because ffmpeg might choose a frame slightly off
+  mouseWheelZoomModifierKey: "ctrl",
+  captureFrameMethod: "videotag", // we don't default to ffmpeg because ffmpeg might choose a frame slightly off
   captureFrameQuality: 0.95,
-  captureFrameFileNameFormat: 'timestamp',
+  captureFrameFileNameFormat: "timestamp",
   enableNativeHevc: true,
   enableUpdateCheck: true,
   cleanupChoices: {
-    trashTmpFiles: true, askForCleanup: true, closeFile: true,
+    trashTmpFiles: true,
+    askForCleanup: true,
+    closeFile: true,
   },
   allowMultipleInstances: false,
   darkMode: true,
@@ -133,21 +134,22 @@ const defaults = {
   outputFileNameMinZeroPadding: 1,
 };
 
-// For portable app: https://github.com/mifi/lossless-cut/issues/645
+// For portable app: https://github.com/tekintian/lossless-cut/issues/645
 async function getCustomStoragePath() {
   try {
-    const isWindows = os.platform() === 'win32';
+    const isWindows = os.platform() === "win32";
     if (!isWindows || process.windowsStore) return undefined;
 
-    // https://github.com/mifi/lossless-cut/issues/645#issuecomment-1001363314
+    // https://github.com/tekintian/lossless-cut/issues/645#issuecomment-1001363314
     // https://stackoverflow.com/questions/46307797/how-to-get-the-original-path-of-a-portable-electron-app
     // https://github.com/electron-userland/electron-builder/blob/master/docs/configuration/nsis.md
-    const customStorageDir = process.env.PORTABLE_EXECUTABLE_DIR || dirname(app.getPath('exe'));
-    const customConfigPath = join(customStorageDir, 'config.json');
+    const customStorageDir =
+      process.env.PORTABLE_EXECUTABLE_DIR || dirname(app.getPath("exe"));
+    const customConfigPath = join(customStorageDir, "config.json");
     if (await pathExists(customConfigPath)) return customStorageDir;
     return undefined;
   } catch (err) {
-    logger.error('Failed to get custom storage path', err);
+    logger.error("Failed to get custom storage path", err);
     return undefined;
   }
 }
@@ -174,33 +176,36 @@ async function tryCreateStore({ customStoragePath }) {
       return;
     } catch (err) {
       // eslint-disable-next-line no-await-in-loop
-      await new Promise(r => setTimeout(r, 2000));
-      logger.error('Failed to create config store, retrying', err);
+      await new Promise((r) => setTimeout(r, 2000));
+      logger.error("Failed to create config store, retrying", err);
     }
   }
 
-  throw new Error('Timed out while creating config store');
+  throw new Error("Timed out while creating config store");
 }
 
 async function init() {
   const customStoragePath = await getCustomStoragePath();
-  if (customStoragePath) logger.info('customStoragePath', customStoragePath);
+  if (customStoragePath) logger.info("customStoragePath", customStoragePath);
 
   await tryCreateStore({ customStoragePath });
 
   // migrate old configs:
-  const enableTransferTimestamps = store.get('enableTransferTimestamps'); // todo remove after a while
+  const enableTransferTimestamps = store.get("enableTransferTimestamps"); // todo remove after a while
   if (enableTransferTimestamps != null) {
-    logger.info('Migrating enableTransferTimestamps');
-    store.delete('enableTransferTimestamps');
-    set('treatOutputFileModifiedTimeAsStart', enableTransferTimestamps ? true : undefined);
+    logger.info("Migrating enableTransferTimestamps");
+    store.delete("enableTransferTimestamps");
+    set(
+      "treatOutputFileModifiedTimeAsStart",
+      enableTransferTimestamps ? true : undefined
+    );
   }
 
-  const cleanupChoices = store.get('cleanupChoices'); // todo remove after a while
+  const cleanupChoices = store.get("cleanupChoices"); // todo remove after a while
   if (cleanupChoices != null) {
     if (cleanupChoices.closeFile == null) {
-      logger.info('Migrating cleanupChoices.closeFile');
-      set('cleanupChoices', { ...cleanupChoices, closeFile: true });
+      logger.info("Migrating cleanupChoices.closeFile");
+      set("cleanupChoices", { ...cleanupChoices, closeFile: true });
     }
   }
 }

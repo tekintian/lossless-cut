@@ -35,7 +35,7 @@ const BatchFilesList = memo(({ selectedBatchFiles, filePath, width, batchFiles, 
     const newSortDesc = sortDesc == null ? false : !sortDesc;
     const sortedFiles = [...batchFiles];
     const order = newSortDesc ? -1 : 1;
-    // natural language sort (numeric) https://github.com/mifi/lossless-cut/issues/844
+    // natural language sort (numeric) https://github.com/tekintian/lossless-cut/issues/844
     sortedFiles.sort((a, b) => order * a.name.localeCompare(b.name, 'en-US', { numeric: true }));
     setBatchFiles(sortedFiles);
     setSortDesc(newSortDesc);

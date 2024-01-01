@@ -22,14 +22,14 @@ const linkStyle = { fontWeight: 'bold', cursor: 'pointer' };
 export function openSendReportDialog(err, state) {
   const reportInstructions = isStoreBuild
     ? (
-      <p><Trans>Please send an email to <span style={linkStyle} role="button" onClick={() => electron.shell.openExternal('mailto:losslesscut@mifi.no')}>losslesscut@mifi.no</span> where you describe what you were doing.</Trans></p>
+      <p><Trans>Please send an email to <span style={linkStyle} role="button" onClick={() => electron.shell.openExternal('mailto:tekintian@gmail.com')}>tekintian@gmail.com</span> where you describe what you were doing.</Trans></p>
     ) : (
       <Trans>
         <p>
-          If you&apos;re having a problem or question about LosslessCut, please first check the links in the <b>Help</b> menu. If you cannot find any resolution, you may ask a question in <span style={linkStyle} role="button" onClick={() => electron.shell.openExternal('https://github.com/mifi/lossless-cut/discussions')}>GitHub discussions</span> or on <span style={linkStyle} role="button" onClick={() => electron.shell.openExternal('https://github.com/mifi/lossless-cut')}>Discord.</span>
+          If you&apos;re having a problem or question about LosslessCut, please first check the links in the <b>Help</b> menu. If you cannot find any resolution, you may ask a question in <span style={linkStyle} role="button" onClick={() => electron.shell.openExternal('https://github.com/tekintian/lossless-cut/discussions')}>GitHub discussions</span> or on <span style={linkStyle} role="button" onClick={() => electron.shell.openExternal('https://github.com/tekintian/lossless-cut')}>Discord.</span>
         </p>
         <p>
-          If you believe that you found a bug in LosslessCut, you may <span style={linkStyle} role="button" onClick={() => electron.shell.openExternal('https://github.com/mifi/lossless-cut/issues')}>report a bug</span>.
+          If you believe that you found a bug in LosslessCut, you may <span style={linkStyle} role="button" onClick={() => electron.shell.openExternal('https://github.com/tekintian/lossless-cut/issues')}>report a bug</span>.
         </p>
       </Trans>
     );

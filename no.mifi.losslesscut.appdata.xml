@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-  <id>no.mifi.losslesscut</id>
+  <id>cn.tekin.losslesscut</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0</project_license>
   <name>LosslessCut</name>
@@ -8,15 +8,15 @@
   <description>
     <p>Simple and ultra fast cross platform tool for lossless trimming/cutting of video and audio files. Great for saving space by rough cutting your large video files taken from a video camera, GoPro, drone, etc. It lets you quickly extract the good parts from your videos and discard many gigabytes of data without doing a slow re-encode and thereby losing quality. It extremely fast because it does an almost direct data copy. It is fueled by the awesome ffmpeg (included) for doing the grunt work. It also features some other lossless operations on videos.</p>
   </description>
-  <launchable type="desktop-id">no.mifi.losslesscut.desktop</launchable>
+  <launchable type="desktop-id">cn.tekin.losslesscut.desktop</launchable>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/mifi/lossless-cut/master/main_screenshot.jpg</image>
+      <image>https://raw.githubusercontent.com/tekintian/lossless-cut/master/main_screenshot.jpg</image>
     </screenshot>
   </screenshots>
-  <url type="homepage">https://mifi.no/losslesscut/</url>
-  <url type="bugtracker">https://github.com/mifi/lossless-cut/issues</url>
-  <url type="donation">https://paypal.me/mifino/usd</url>
+  <url type="homepage">https://api.tekin.cn/losslesscut/</url>
+  <url type="bugtracker">https://github.com/tekintian/lossless-cut/issues</url>
+  <url type="donation">https://paypal.me/tekintian/usd</url>
   <releases>
     <release version="3.59.1" date="2023-12-22"/>
     <release version="3.59.0" date="2023-12-22"/>

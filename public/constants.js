@@ -1,7 +1,8 @@
-const homepage = 'https://mifi.no/losslesscut/';
-const githubLink = 'https://github.com/mifi/lossless-cut/';
-const getReleaseUrl = (version) => `https://github.com/mifi/lossless-cut/releases/tag/v${version}`;
-const licensesPage = 'https://losslesscut.mifi.no/licenses.txt';
+const homepage = "https://api.tekin.cn/losslesscut/";
+const githubLink = "https://github.com/tekintian/lossless-cut/";
+const getReleaseUrl = (version) =>
+  `https://github.com/tekintian/lossless-cut/releases/tag/v${version}`;
+const licensesPage = "https://api.tekin.cn/losslesscut/licenses";
 
 module.exports = {
   homepage,

@@ -406,7 +406,7 @@ const App = memo(() => {
   const fileUri = useMemo(() => {
     if (!effectiveFilePath) return '';
     const uri = filePathToUrl(effectiveFilePath);
-    // https://github.com/mifi/lossless-cut/issues/1674
+    // https://github.com/tekintian/lossless-cut/issues/1674
     if (cacheBuster !== 0) {
       const qs = new URLSearchParams();
       qs.set('t', cacheBuster);
@@ -469,7 +469,7 @@ const App = memo(() => {
   }, []);
 
   const onVideoAbort = useCallback(() => {
-    setPlaying(false); // we want to preserve current time https://github.com/mifi/lossless-cut/issues/1674#issuecomment-1658937716
+    setPlaying(false); // we want to preserve current time https://github.com/tekintian/lossless-cut/issues/1674#issuecomment-1658937716
     playbackModeRef.current = undefined;
   }, []);
 
@@ -485,7 +485,7 @@ const App = memo(() => {
   const increaseRotation = useCallback(() => {
     setRotation((r) => (r + 90) % 450);
     setHideCanvasPreview(false);
-    // Matroska is known not to work, so we warn user. See https://github.com/mifi/lossless-cut/discussions/661
+    // Matroska is known not to work, so we warn user. See https://github.com/tekintian/lossless-cut/discussions/661
     const supportsRotation = !['matroska', 'webm'].includes(fileFormat);
     if (!supportsRotation && !hideAllNotifications) toast.fire({ text: i18n.t('Lossless rotation might not work with this file format. You may try changing to MP4') });
   }, [hideAllNotifications, fileFormat]);
@@ -873,7 +873,7 @@ const App = memo(() => {
 
     const video = videoRef.current;
 
-    // This was added to re-sync time if file gets reloaded #1674 - but I had to remove this because it broke loop-selected-segments https://github.com/mifi/lossless-cut/discussions/1785#discussioncomment-7852134
+    // This was added to re-sync time if file gets reloaded #1674 - but I had to remove this because it broke loop-selected-segments https://github.com/tekintian/lossless-cut/discussions/1785#discussioncomment-7852134
     // if (Math.abs(commandedTimeRef.current - video.currentTime) > 1) video.currentTime = commandedTimeRef.current;
 
     if (resetPlaybackRate) video.playbackRate = outputPlaybackRate;
@@ -1235,10 +1235,10 @@ const App = memo(() => {
 
       if (!exportConfirmEnabled) notices.push(i18n.t('Export options are not shown. You can enable export options by clicking the icon right next to the export button.'));
 
-      // https://github.com/mifi/lossless-cut/issues/329
+      // https://github.com/tekintian/lossless-cut/issues/329
       if (isIphoneHevc(mainFileFormatData, mainStreams)) warnings.push(i18n.t('There is a known issue with cutting iPhone HEVC videos. The output file may not work in all players.'));
 
-      // https://github.com/mifi/lossless-cut/issues/280
+      // https://github.com/tekintian/lossless-cut/issues/280
       if (!ffmpegExperimental && isProblematicAvc1(fileFormat, mainStreams)) warnings.push(i18n.t('There is a known problem with this file type, and the output might not be playable. You can work around this problem by enabling the "Experimental flag" under Settings.'));
 
       if (exportExtraStreams) {
@@ -1533,7 +1533,7 @@ const App = memo(() => {
 
       // This needs to be last, because it triggers <video> to load the video
       // If not, onVideoError might be triggered before setWorking() has been cleared.
-      // https://github.com/mifi/lossless-cut/issues/515
+      // https://github.com/tekintian/lossless-cut/issues/515
       setFilePath(fp);
     } catch (err) {
       if (err) {
@@ -2178,7 +2178,7 @@ const App = memo(() => {
     console.error('onVideoError', error.message, error.code);
 
     try {
-      const PIPELINE_ERROR_DECODE = 3; // This usually happens when the user presses play or seeks, but the video is not actually playable. To reproduce: "RX100VII PCM audio timecode.MP4" or see https://github.com/mifi/lossless-cut/issues/804
+      const PIPELINE_ERROR_DECODE = 3; // This usually happens when the user presses play or seeks, but the video is not actually playable. To reproduce: "RX100VII PCM audio timecode.MP4" or see https://github.com/tekintian/lossless-cut/issues/804
       const MEDIA_ERR_SRC_NOT_SUPPORTED = 4; // Test: issue-668-3.20.1.m2ts - NOTE: DEMUXER_ERROR_COULD_NOT_OPEN and DEMUXER_ERROR_NO_SUPPORTED_STREAMS is also 4
       if (!([MEDIA_ERR_SRC_NOT_SUPPORTED, PIPELINE_ERROR_DECODE].includes(error.code) && !usingPreviewFile && filePath)) return;
 
@@ -2215,7 +2215,7 @@ const App = memo(() => {
   }, [fileUri, usingPreviewFile, filePath, setWorking, hasVideo, hasAudio, html5ifyAndLoadWithPreferences, customOutDir, showUnsupportedFileMessage]);
 
   const onVideoFocus = useCallback((e) => {
-    // prevent video element from stealing focus in fullscreen mode https://github.com/mifi/lossless-cut/issues/543#issuecomment-1868167775
+    // prevent video element from stealing focus in fullscreen mode https://github.com/tekintian/lossless-cut/issues/543#issuecomment-1868167775
     e.target.blur();
   }, []);
 
@@ -2259,7 +2259,7 @@ const App = memo(() => {
 
     const actionsWithArgs = {
       openFiles: (filePaths) => { userOpenFiles(filePaths.map(resolvePathIfNeeded)); },
-      // todo separate actions per type and move them into mainActions? https://github.com/mifi/lossless-cut/issues/254#issuecomment-932649424
+      // todo separate actions per type and move them into mainActions? https://github.com/tekintian/lossless-cut/issues/254#issuecomment-932649424
       importEdlFile,
       exportEdlFile: tryExportEdlFile,
     };

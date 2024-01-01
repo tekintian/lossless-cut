@@ -57,7 +57,7 @@ const StreamParametersEditor = ({ stream, streamParams, updateStreamParams }) =>
   const { t } = useTranslation();
 
   const ui = [];
-  // https://github.com/mifi/lossless-cut/issues/1680#issuecomment-1682915193
+  // https://github.com/tekintian/lossless-cut/issues/1680#issuecomment-1682915193
   if (stream.codec_name === 'h264') {
     ui.push(
       <Checkbox key="bsfH264Mp4toannexb" checked={!!streamParams.get('bsfH264Mp4toannexb')} label={t('Enable "{{filterName}}" bitstream filter.', { filterName: 'h264_mp4toannexb' })} onChange={(e) => updateStreamParams((params) => params.set('bsfH264Mp4toannexb', e.target.checked))} />,

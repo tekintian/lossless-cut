@@ -9,7 +9,7 @@ const logger = require('./logger');
 const { app } = electron;
 
 const gh = new GitHub();
-const repo = gh.getRepo('mifi', 'lossless-cut');
+const repo = gh.getRepo('tekintian', 'lossless-cut');
 
 async function checkNewVersion() {
   try {
